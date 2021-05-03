@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+
+    <!--novalidate prevent browser from validating i.e required wont work-->
+    <div class="row">
+        <h1 class="text-center">New Hotel</h1>
+        <div class="col-6 offset-3">
+            <form action="/hotels" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="hotel[title]" required>
+                    <div class="valid-feedback">
+                        nice
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="hotel[location]" required>
+                    <div class="valid-feedback">
+                        nice
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image Url</label>
+                    <input class="form-control" type="text" id="image" name="hotel[image]" required>
+                    <div class="valid-feedback">
+                        nice
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Hotel price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                        <input name="hotel[price]" type="text" id="price" class="form-control" placeholder="0.00"
+                            required aria-label="price" aria-describedby="price-label">
+                        <div class="valid-feedback">
+                            nice
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">description</label>
+                    <textarea class="form-control" type="text" id="description" name="hotel[description]"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        nice
+                    </div>
+                </div>
+                <div class="mb-3"><button class="btn btn-success">Add Hotel</button></div>
+
+            </form>
+        </div>
+    </div>

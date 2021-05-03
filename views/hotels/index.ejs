@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+    <h1>All Hotels</h1>
+    <div><a href="/hotels/new">ADD NEW</a></div>
+    <% for (let hotel of hotels) {%>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" alt="" src="<%= hotel.image %> ">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= hotel.title %>
+                        </h5>
+                        <p class="card-text">
+                            <%= hotel.description %>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%= hotel.location%>
+                            </small>
+                        </p>
+                        <a href="/hotels/<%= hotel._id %> " class="btn btn-primary"> View <%= hotel.title %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
