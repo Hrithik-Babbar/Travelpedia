@@ -59,13 +59,13 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error')
     next();
 })
-app.get('/', (req, res) => {
-    res.render('home');
-})
-
 app.use('/hotels', hotelsRoutes);
 app.use('/hotels/:id/reviews', reviewsRoutes);
 app.use('/', userRoutes)
+
+app.get('/', (req, res) => {
+    res.redirect('/hotels');
+})
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
