@@ -11,14 +11,43 @@
                 <a class="nav-link" href="/hotels/new">New Hotel</a>
 
             </div>
-            <div class="navbar-nav ml-auto">
+            <div class="navbar-nav ml-auto " style="text-align: center;">
                 <% if(!currentUser){%>
                     <a class="nav-link" href="/login">Login</a>
                     <a class="nav-link" href="/register">Sign up</a>
                     <% }else{ %>
+                        <a class="nav-link" id="bt">Nearby</a>
                         <a class="nav-link" href="/logout">Logout</a>
                         <% } %>
             </div>
         </div>
     </div>
 </nav>
+<script>
+    var bt = document.getElementById("bt");
+    bt.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((showPosition));
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    });
+    function showPosition(position) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/nearby");
+        var latitude = document.createElement("input");
+        latitude.setAttribute("type", "text");
+        latitude.setAttribute("name", "latitude");
+        latitude.setAttribute("value", `${position.coords.latitude}`);
+        var longitude = document.createElement("input");
+        longitude.setAttribute("type", "text");
+        longitude.setAttribute("name", "longitude");
+        longitude.setAttribute("value", `${position.coords.longitude}`);
+        form.appendChild(latitude);
+        form.appendChild(longitude);
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
