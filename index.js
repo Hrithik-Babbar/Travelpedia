@@ -95,6 +95,7 @@ app.use((err, req, res, next) => {
         err.message = 'Oh no,something went wrong'
     res.status(statusCode).render('error', { err });
 })
-app.listen(80, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
     //app.listen set port which will listen to our request
 })
